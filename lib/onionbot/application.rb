@@ -31,7 +31,7 @@ module OnionBot
       save(result)
     rescue => e
       puts "#{e.class} #{e.message}"
-      logger.error({class: e.class, message: e.message})
+      logger.error({class: e.class, message: e.message}.to_json)
       exit 1
     end
 
