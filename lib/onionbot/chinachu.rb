@@ -22,6 +22,7 @@ module OnionBot
       ['id', 'title', 'subTitle', 'episode', 'description', 'category'].each do |key|
         values[key] = queue[key] if (queue[key].to_s != '')
       end
+      values['channel'] = queue['channel']['name']
       ['start', 'end'].each do |key|
         values[key] = Time.at(queue[key] / 1000).to_s
       end
