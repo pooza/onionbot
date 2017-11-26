@@ -6,7 +6,8 @@ require 'yaml'
 module OnionBot
   class Application
     def execute
-      sleep(5)
+      sleep(sleep_seconds)
+
       result = chinachu.queues
       result.each do |key, queue|
         unless prev_result[key]
@@ -53,6 +54,10 @@ module OnionBot
         @slack = OnionBot::Slack.new(config['local']['slack'])
       end
       return @slack
+    end
+
+    def sleep_seconds
+      return (config['local']['sleep'] || config['application']['sleep'])
     end
 
     def result_path
