@@ -1,5 +1,6 @@
 require 'onionbot/chinachu'
 require 'onionbot/slack'
+require 'syslog/logger'
 require 'json'
 require 'yaml'
 
@@ -14,6 +15,7 @@ module OnionBot
           message = chinachu.summary(queue)
           message['message'] = '録画開始'
           slack.say(message)
+          logger.info(message.to_json)
         end
       end
 
@@ -22,12 +24,14 @@ module OnionBot
           message = chinachu.summary(queue)
           message['message'] = '録画終了'
           slack.say(message)
+          logger.info(message.to_json)
         end
       end
 
       save(result)
     rescue => e
       puts "#{e.class} #{e.message}"
+      logger.error({class: e.class, message: e.message})
       exit 1
     end
 
@@ -54,6 +58,13 @@ module OnionBot
         @slack = OnionBot::Slack.new(config['local']['slack'])
       end
       return @slack
+    end
+
+    def logger
+      unless @logger
+        @logger = Syslog::Logger.new(config['application']['name'])
+      end
+      return @logger
     end
 
     def sleep_seconds
