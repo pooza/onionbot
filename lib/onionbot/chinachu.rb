@@ -1,5 +1,6 @@
 require 'addressable/uri'
 require 'open-uri'
+require 'json'
 require 'time'
 
 module OnionBot
@@ -17,16 +18,14 @@ module OnionBot
     end
 
     def summary (queue)
-      return {
-        title: queue['title'],
-        subTitle: queue['subTitle'],
-        episode: queue['episode'],
-        description: queue['descriptiion'],
-        start: Time.at(queue['start'] / 1000).to_s,
-        end: Time.at(queue['end'] / 1000).to_s,
-        cateogry: queue['category'],
-        channel: queue['channel']['name'],
-      }
+      values = {}
+      ['id', 'title', 'subTitle', 'episode', 'description', 'category'].each do |key|
+        values[key] = queue[key] if (queue[key].to_s != '')
+      end
+      ['start', 'end'].each do |key|
+        values[key] = Time.at(queue[key] / 1000).to_s
+      end
+      return values
     end
 
     def url
