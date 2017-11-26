@@ -6,6 +6,7 @@ require 'yaml'
 module OnionBot
   class Application
     def execute
+      sleep(5)
       result = chinachu.queues
       result.each do |digest, queue|
         unless prev_result[digest]
