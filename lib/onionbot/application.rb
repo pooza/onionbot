@@ -6,18 +6,17 @@ require 'yaml'
 module OnionBot
   class Application
     def execute
-      sleep(5)
       result = chinachu.queues
-      result.each do |digest, queue|
-        unless prev_result[digest]
+      result.each do |key, queue|
+        unless prev_result[key]
           message = chinachu.summary(queue)
           message['message'] = '録画開始'
           slack.say(message)
         end
       end
 
-      prev_result.each do |digest, queue|
-        unless result[digest]
+      prev_result.each do |key, queue|
+        unless result[key]
           message = chinachu.summary(queue)
           message['message'] = '録画終了'
           slack.say(message)

@@ -1,6 +1,5 @@
 require 'addressable/uri'
 require 'open-uri'
-require 'digest/sha1'
 require 'time'
 
 module OnionBot
@@ -12,7 +11,7 @@ module OnionBot
     def queues
       result = {}
       JSON.parse(open(url.to_s).read).each do |queue|
-        result[Digest::SHA1.hexdigest(queue.to_s)] = queue
+        result[queue['id']] = queue
       end
       return result
     end
