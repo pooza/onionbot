@@ -18,12 +18,8 @@ module OnionBot
       File.write(path, JSON.pretty_generate(result))
     end
 
-    private
     def path
-      unless @path
-        @path = File.join(ROOT_DIR, 'tmp/recording.json')
-      end
-      return @path
+      return File.join(ROOT_DIR, 'tmp/recording.json')
     end
   end
 end

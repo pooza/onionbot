@@ -2,11 +2,12 @@ require 'addressable/uri'
 require 'open-uri'
 require 'json'
 require 'time'
+require 'onionbot/config'
 
 module OnionBot
   class Chinachu
-    def initialize (config)
-      @config = config
+    def initialize
+      @config = Config.new['chinachu']
     end
 
     def queues

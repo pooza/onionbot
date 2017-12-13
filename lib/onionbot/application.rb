@@ -9,8 +9,8 @@ module OnionBot
     def initialize
       @config = Config.new
       @logger = Syslog::Logger.new(@config['application']['name'])
-      @chinachu = Chinachu.new(@config['local']['chinachu'])
-      @slack = Slack.new(@config['local']['slack'])
+      @chinachu = Chinachu.new
+      @slack = Slack.new
       @data_file = DataFile.new
     end
 
