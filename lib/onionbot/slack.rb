@@ -6,7 +6,7 @@ require 'onionbot/config'
 module OnionBot
   class Slack
     def initialize
-      @config = Config.new['slack']
+      @config = Config.new['local']['slack']
       @url = Addressable::URI.parse(@config['hook']['url'])
     end
 
