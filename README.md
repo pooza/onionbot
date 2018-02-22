@@ -50,5 +50,5 @@ onionbotというプログラム名で、syslogに出力している。
 
 ## ■操作
 
-onionbot.rbを実行する。root権限不要。  
+loader.rbを実行する。root権限不要。  
 通常はcronで5分毎等で起動すればよいと思う。
