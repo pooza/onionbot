@@ -7,7 +7,7 @@ require 'onionbot/config'
 module OnionBot
   class Chinachu
     def initialize
-      @config = Config.new['local']['chinachu']
+      @config = Config.instance['local']['chinachu']
     end
 
     def queues

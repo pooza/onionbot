@@ -1,7 +1,10 @@
 require 'yaml'
+require 'singleton'
 
 module OnionBot
   class Config < Hash
+    include Singleton
+
     def initialize
       super
       Dir.glob(File.join(ROOT_DIR, 'config', '*.yaml')).each do |f|
