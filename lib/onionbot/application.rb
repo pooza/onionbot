@@ -16,6 +16,7 @@ module OnionBot
     end
 
     def execute
+      @logger.info({message: 'start', version: Package.version})
       sleep(sleep_seconds)
       queues = @chinachu.queues
 
@@ -36,6 +37,7 @@ module OnionBot
       end
 
       @data_file.save(queues)
+      @logger.info({message: 'start', version: Package.version})
     rescue => e
       message = {class: e.class, message: e.message, version: Package.version}
       @slack.say(message)
