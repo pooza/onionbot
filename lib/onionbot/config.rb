@@ -11,6 +11,7 @@ module OnionBot
         self[File.basename(f, '.yaml')] = YAML.load_file(f)
       end
       raise 'local.yamlが見つかりません。' unless self['local']
+      raise 'Slackの設定が見つかりません。' unless self['local']['slack']
     end
   end
 end

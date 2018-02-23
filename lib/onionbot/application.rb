@@ -2,12 +2,14 @@ require 'onionbot/config'
 require 'onionbot/chinachu'
 require 'onionbot/slack'
 require 'onionbot/data_file'
-require 'syslog/logger'
+require 'onionbot/package'
+require 'onionbot/logger'
 
 module OnionBot
   class Application
     def initialize
       @config = Config.instance
+      @logger = Logger.new(Package.name)
       @chinachu = Chinachu.new
       @slack = Slack.new
       @data_file = DataFile.new
@@ -21,7 +23,7 @@ module OnionBot
         unless queues[key]
           message = create_message(queue, '録画終了')
           @slack.say(message)
-          Application.logger.info(message.to_json)
+          @logger.info(message)
         end
       end
 
@@ -29,39 +31,16 @@ module OnionBot
         unless @data_file.load[key]
           message = create_message(queue, '録画開始')
           @slack.say(message)
-          Application.logger.info(message.to_json)
+          @logger.info(message)
         end
       end
 
       @data_file.save(queues)
     rescue => e
-      puts "#{e.class} #{e.message}"
-      Application.logger.error({
-        class: e.class,
-        message: e.message,
-        version: Application.version,
-      }.to_json)
+      message = {class: e.class, message: e.message, version: Package.version}
+      @slack.say(message)
+      @logger.error(message)
       exit 1
-    end
-
-    def self.name
-      return Config.instance['application']['name']
-    end
-
-    def self.version
-      return Config.instance['application']['version']
-    end
-
-    def self.url
-      return Config.instance['application']['url']
-    end
-
-    def self.full_name
-      return "#{Application.name} #{Application.version}"
-    end
-
-    def self.logger
-      return Syslog::Logger.new(Application.name)
     end
 
     private
