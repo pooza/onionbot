@@ -1,5 +1,6 @@
 require 'yaml'
 require 'singleton'
+require 'onionbot/package'
 
 module OnionBot
   class Config < Hash
@@ -21,8 +22,8 @@ module OnionBot
 
     def dirs
       return [
-        File.join('/usr/local/etc', File.basename(ROOT_DIR)),
-        File.join('/etc', File.basename(ROOT_DIR)),
+        File.join('/usr/local/etc', Package.name),
+        File.join('/etc', Package.name),
         File.join(ROOT_DIR, 'config'),
       ]
     end
