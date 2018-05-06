@@ -45,7 +45,7 @@ slack:
 ### syslog設定
 
 onionbotというプログラム名で、syslogに出力している。  
-必要に応じて、適宜設定。以下、rsyslogでの設定例。
+以下、rsyslogでの設定例。
 
 ```
 :programname, isequal, "onionbot" -/var/log/onionbot.log
@@ -67,5 +67,3 @@ local.yamlは、上記設置例ではconfigディレクトリ内に置いてい�
 - /etc/onionbot/local.yml
 - __ROOT_DIR__/config/local.yaml
 - __ROOT_DIR__/config/local.yml
-
-ファイルが発見できた時点で、以降の検索をやめる。
