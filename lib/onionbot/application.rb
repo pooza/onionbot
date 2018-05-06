@@ -2,21 +2,20 @@ require 'onionbot/config'
 require 'onionbot/chinachu'
 require 'onionbot/slack'
 require 'onionbot/data_file'
-require 'onionbot/package'
 require 'onionbot/logger'
 
 module OnionBot
   class Application
     def initialize
       @config = Config.instance
-      @logger = Logger.new(Package.name)
+      @logger = Logger.new
       @chinachu = Chinachu.new
       @slack = Slack.new
       @data_file = DataFile.new
     end
 
     def execute
-      @logger.info({message: 'start', version: Package.version})
+      @logger.info({message: 'start'})
       sleep(sleep_seconds)
       queues = @chinachu.queues
 
@@ -37,9 +36,9 @@ module OnionBot
       end
 
       @data_file.save(queues)
-      @logger.info({message: 'start', version: Package.version})
+      @logger.info({message: 'end'})
     rescue => e
-      message = {class: e.class, message: e.message, version: Package.version}
+      message = {class: e.class, message: e.message}
       @slack.say(message)
       @logger.error(message)
       exit 1
