@@ -13,7 +13,7 @@ module OnionBot
       return @data
     end
 
-    def save (result)
+    def save(result)
       @data = nil
       File.write(path, JSON.pretty_generate(result))
     end

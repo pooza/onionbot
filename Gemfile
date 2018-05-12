@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-gem 'rake'
 gem 'activesupport'
 gem 'addressable'
 gem 'httparty'
+gem 'rake'
 gem 'syslog-logger'
