@@ -38,8 +38,11 @@ vi config/local.yaml
 chinachu:
   url: http://localhost:20772/ #ChinachuのURL
 slack:
-  hook:
-    url: https://hooks.slack.com/services/xxxxx #Slack WebフックのURL
+  # SlackのWebhookと互換性のあるものを列挙。
+  hooks:
+    - https://hooks.slack.com/services/xxxxx
+    - https://discordapp.com/api/webhooks/xxxxx
+    - https://mstdn.b-shock.org/webhook/v1.0/toot/xxxxx
 ```
 
 ### syslog設定

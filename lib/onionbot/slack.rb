@@ -6,9 +6,8 @@ require 'onionbot/logger'
 
 module OnionBot
   class Slack
-    def initialize
-      @config = Config.instance['local']['slack']
-      @url = Addressable::URI.parse(@config['hook']['url'])
+    def initialize(url)
+      @url = Addressable::URI.parse(url)
       @logger = Logger.new
     end
 
