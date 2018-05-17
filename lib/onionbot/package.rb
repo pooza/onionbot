@@ -3,7 +3,7 @@ require 'onionbot/config'
 module OnionBot
   module Package
     def self.name
-      return File.basename(ROOT_DIR)
+      return 'onionbot'
     end
 
     def self.version
