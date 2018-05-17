@@ -16,9 +16,6 @@
 git clone git@github.com:pooza/onionbot.git
 ```
 
-クローンを行うとローカルにリポジトリが作成されるが、このディレクトリの名前は
-変更しないことを推奨。（syslogのプログラム名や、設定ファイルのパス等に影響）
-
 ### 依存するgemのインストール
 
 ```
@@ -33,12 +30,13 @@ vi config/local.yaml
 ```
 
 以下、設定例。
+/slack/hooks/* に、SlackのWebhookと互換性のあるものを列挙。  
+（拙作[tomato-toot](https://github.com/pooza/tomato-toot)も該当）
 
 ```
 chinachu:
   url: http://localhost:20772/ #ChinachuのURL
 slack:
-  # SlackのWebhookと互換性のあるものを列挙。
   hooks:
     - https://hooks.slack.com/services/xxxxx
     - https://discordapp.com/api/webhooks/xxxxx
