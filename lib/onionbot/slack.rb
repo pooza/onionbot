@@ -19,7 +19,7 @@ module OnionBot
           'Content-Type' => 'application/json',
           'User-Agent' => "#{Package.full_name} #{Package.url}",
         },
-        ssl_ca_file: File.join(ROOT_DIR, 'cert/cacert.pem'),
+        ssl_ca_file: ENV['BUNDLE_GEMFILE'],
       })
       if message.is_a?(Exception)
         @logger.error(message)
