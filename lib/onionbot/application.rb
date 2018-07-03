@@ -25,7 +25,9 @@ module OnionBot
       @data_file.save(@chinachu.queues)
       @logger.info({message: 'end'})
     rescue => e
-      Slack.all.map{ |h| h.say({class: e.class, message: e.message})}
+      message = create_error_message(e)
+      @logger.error(message)
+      Slack.all.map{ |h| h.say(message)}
       exit 1
     end
 
@@ -35,6 +37,14 @@ module OnionBot
       message = @chinachu.summary(queue)
       message['message'] = message_string
       return message
+    end
+
+    def create_error_message(exception)
+      return {
+        class: exception.class,
+        message: exception.message,
+        backtrace: exception.backtrace[0..5],
+      }
     end
 
     def sleep_seconds
