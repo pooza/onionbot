@@ -17,17 +17,17 @@ module OnionBot
       @logger.info({message: 'start'})
       sleep(sleep_seconds)
       @data_file.load.each do |k, q|
-        Slack.all.map{ |h| h.say(create_message(q, '録画終了'))} unless @chinachu.queues[k]
+        Slack.broadcast(create_message(q, '録画終了')) unless @chinachu.queues[k]
       end
       @chinachu.queues.each do |k, q|
-        Slack.all.map{ |h| h.say(create_message(q, '録画開始'))} unless @data_file.load[k]
+        Slack.broadcast(create_message(q, '録画開始')) unless @data_file.load[k]
       end
       @data_file.save(@chinachu.queues)
       @logger.info({message: 'end'})
     rescue => e
       message = create_error_message(e)
       @logger.error(message)
-      Slack.all.map{ |h| h.say(message)}
+      Slack.broadcast(message)
       exit 1
     end
 
