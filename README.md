@@ -39,7 +39,7 @@ chinachu:
 slack:
   hooks:
     - https://hooks.slack.com/services/xxxxx
-    - https://discordapp.com/api/webhooks/xxxxx
+    - https://discordapp.com/api/webhooks/xxxxx/slack
     - https://mstdn.b-shock.org/webhook/v1.0/toot/xxxxx
 ```
 
