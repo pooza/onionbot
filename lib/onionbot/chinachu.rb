@@ -1,8 +1,9 @@
 require 'addressable/uri'
-require 'open-uri'
 require 'json'
 require 'time'
+require 'httparty'
 require 'onionbot/config'
+require 'onionbot/package'
 
 module OnionBot
   class Chinachu
@@ -12,7 +13,7 @@ module OnionBot
 
     def queues
       result = {}
-      JSON.parse(URI.parse(url).open.read).each do |queue|
+      HTTParty.get(url, {headers: {'User-Agent': Package.user_agent}}).each do |queue|
         result[queue['id']] = queue
       end
       return result
