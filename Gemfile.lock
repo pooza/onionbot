@@ -11,7 +11,7 @@ GEM
     concurrent-ruby (1.0.5)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
     multi_xml (0.6.0)
@@ -33,4 +33,4 @@ DEPENDENCIES
   syslog-logger
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
