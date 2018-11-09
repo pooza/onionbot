@@ -1,6 +1,6 @@
 require 'json'
 
-module OnionBot
+module Onionbot
   class DataFile
     def load
       unless @data

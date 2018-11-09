@@ -1,5 +1,12 @@
 AllCops:
   AllowSymlinksInCacheRootDirectory: true
+  DisplayCopNames: true
+  Exclude:
+    - '**/._*'
+  TargetRubyVersion: 2.5
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Style/DoubleNegation:
   Enabled: false
@@ -37,12 +44,12 @@ Metrics/ClassLength:
 Naming/FileName:
   Exclude:
     - Rakefile.rb
-    - webapp/config/Rakefile.local.rb
+    - '**/Rakefile*.rb'
 
 Metrics/BlockLength:
   Exclude:
     - Rakefile.rb
-    - webapp/config/Rakefile.local.rb
+    - '**/Rakefile*.rb'
 
 Style/BracesAroundHashParameters:
   Enabled: false

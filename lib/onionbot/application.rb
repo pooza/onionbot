@@ -1,10 +1,4 @@
-require 'onionbot/config'
-require 'onionbot/chinachu'
-require 'onionbot/slack'
-require 'onionbot/data_file'
-require 'onionbot/logger'
-
-module OnionBot
+module Onionbot
   class Application
     def initialize
       @config = Config.instance
@@ -14,7 +8,7 @@ module OnionBot
     end
 
     def execute
-      @logger.info({message: 'start'})
+      @logger.info({message: 'start', version: Package.version})
       sleep(sleep_seconds)
       @data_file.load.each do |k, q|
         Slack.broadcast(create_message(q, '録画終了')) unless @chinachu.queues[k]
@@ -23,7 +17,7 @@ module OnionBot
         Slack.broadcast(create_message(q, '録画開始')) unless @data_file.load[k]
       end
       @data_file.save(@chinachu.queues)
-      @logger.info({message: 'end'})
+      @logger.info({message: 'end', version: Package.version})
     rescue => e
       message = create_error_message(e)
       @logger.error(message)

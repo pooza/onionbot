@@ -1,6 +1,4 @@
-require 'onionbot/config'
-
-module OnionBot
+module Onionbot
   module Package
     def self.name
       return 'onionbot'

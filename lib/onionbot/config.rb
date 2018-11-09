@@ -1,8 +1,7 @@
 require 'yaml'
 require 'singleton'
-require 'onionbot/package'
 
-module OnionBot
+module Onionbot
   class Config < Hash
     include Singleton
 

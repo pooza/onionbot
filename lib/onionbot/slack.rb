@@ -1,11 +1,8 @@
 require 'addressable/uri'
 require 'httparty'
 require 'json'
-require 'onionbot/config'
-require 'onionbot/logger'
-require 'onionbot/package'
 
-module OnionBot
+module Onionbot
   class Slack
     def initialize(url)
       @url = Addressable::URI.parse(url)

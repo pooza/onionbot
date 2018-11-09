@@ -7,6 +7,6 @@ $LOAD_PATH.push(File.join(ROOT_DIR, 'lib'))
 ENV['BUNDLE_GEMFILE'] ||= File.join(ROOT_DIR, 'Gemfile')
 
 require 'bundler/setup'
-require 'onionbot/application'
+require 'onionbot'
 
-OnionBot::Application.new.execute
+Onionbot::Application.new.execute

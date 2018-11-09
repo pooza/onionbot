@@ -2,10 +2,8 @@ require 'addressable/uri'
 require 'json'
 require 'time'
 require 'httparty'
-require 'onionbot/config'
-require 'onionbot/package'
 
-module OnionBot
+module Onionbot
   class Chinachu
     def initialize
       @config = Config.instance['local']['chinachu']
