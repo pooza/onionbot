@@ -6,7 +6,7 @@ require 'httparty'
 module Onionbot
   class Chinachu
     def initialize
-      @config = Config.instance['local']['chinachu']
+      @config = Config.instance
     end
 
     def queues
@@ -31,7 +31,7 @@ module Onionbot
 
     def url
       unless @url
-        @url = Addressable::URI.parse(@config['url'])
+        @url = Addressable::URI.parse(@config['/chinachu/url'])
         @url.path = '/api/recording.json'
       end
       return @url
