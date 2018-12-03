@@ -9,7 +9,7 @@ module Onionbot
 
     def execute
       @logger.info({message: 'start', version: Package.version})
-      sleep(sleep_seconds)
+      sleep(@config['/sleep'])
       @data_file.load.each do |k, q|
         Slack.broadcast(create_message(q, '録画終了')) unless @chinachu.queues[k]
       end
@@ -31,18 +31,6 @@ module Onionbot
       message = @chinachu.summary(queue)
       message['message'] = message_string
       return message
-    end
-
-    def create_error_message(exception)
-      return {
-        class: exception.class,
-        message: exception.message,
-        backtrace: exception.backtrace[0..5],
-      }
-    end
-
-    def sleep_seconds
-      return (@config['local']['sleep'] || @config['application']['sleep'])
     end
   end
 end
