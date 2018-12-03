@@ -19,9 +19,9 @@ module Onionbot
       @data_file.save(@chinachu.queues)
       @logger.info({message: 'end', version: Package.version})
     rescue => e
-      message = create_error_message(e)
-      @logger.error(message)
-      Slack.broadcast(message)
+      e = Error.create(e)
+      Slack.broadcast(e.to_h)
+      @logger.error(e.to_h)
       exit 1
     end
 

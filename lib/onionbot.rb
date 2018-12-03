@@ -9,7 +9,13 @@ module Onionbot
   autoload :Chinachu
   autoload :Config
   autoload :DataFile
+  autoload :Environment
+  autoload :Error
   autoload :Logger
   autoload :Package
   autoload :Slack
+
+  autoload_under 'error' do
+    autoload :ConfigError
+  end
 end
