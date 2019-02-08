@@ -19,8 +19,8 @@ module Onionbot
 
     def summary(queue)
       values = {}
-      ['id', 'title', 'subTitle', 'episode', 'description', 'category'].each do |key|
-        values[key] = queue[key] if queue[key].to_s != ''
+      ['title', 'subTitle', 'episode', 'description', 'category'].each do |key|
+        values[key] = queue[key] if queue[key].present?
       end
       values['channel'] = queue['channel']['name']
       ['start', 'end'].each do |key|
