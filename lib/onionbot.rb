@@ -1,6 +1,7 @@
 require 'active_support'
 require 'active_support/core_ext'
 require 'active_support/dependencies/autoload'
+require 'ginseng'
 
 module Onionbot
   extend ActiveSupport::Autoload
@@ -10,12 +11,5 @@ module Onionbot
   autoload :Config
   autoload :DataFile
   autoload :Environment
-  autoload :Error
-  autoload :Logger
   autoload :Package
-  autoload :Slack
-
-  autoload_under 'error' do
-    autoload :ConfigError
-  end
 end

@@ -19,7 +19,7 @@ module Onionbot
     end
 
     def path
-      return File.join(ROOT_DIR, 'tmp/recording.json')
+      return File.join(Environment.dir, 'tmp/recording.json')
     end
   end
 end
