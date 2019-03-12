@@ -16,6 +16,10 @@ module Onionbot
       return 'Onionbot::Logger'
     end
 
+    def http_class
+      return 'Onionbot::HTTP'
+    end
+
     def self.name
       return 'onionbot'
     end

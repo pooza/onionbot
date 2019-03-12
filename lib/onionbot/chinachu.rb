@@ -1,17 +1,17 @@
 require 'addressable/uri'
 require 'json'
 require 'time'
-require 'httparty'
 
 module Onionbot
   class Chinachu
     def initialize
       @config = Config.instance
+      @http = HTTP.new
     end
 
     def queues
       result = {}
-      HTTParty.get(url, {headers: {'User-Agent': Package.user_agent}}).each do |queue|
+      @http.get(url).each do |queue|
         result[queue['id']] = queue
       end
       return result

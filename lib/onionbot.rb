@@ -11,6 +11,7 @@ module Onionbot
   autoload :Config
   autoload :DataFile
   autoload :Environment
+  autoload :HTTP
   autoload :Logger
   autoload :Package
   autoload :Slack
