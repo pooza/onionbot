@@ -6,7 +6,7 @@ namespace :bundle do
 
   desc 'check gems'
   task :check do
-    unless MulukhiyaTootProxy::Environment.gem_fresh?
+    unless Onionbot::Environment.gem_fresh?
       STDERR.puts 'gems is not fresh.'
       exit 1
     end
