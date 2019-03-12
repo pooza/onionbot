@@ -9,4 +9,4 @@ ENV['BUNDLE_GEMFILE'] ||= File.join(dir, 'Gemfile')
 require 'bundler/setup'
 require 'onionbot'
 
-Onionbot::Application.new.execute
+Onionbot::Crawler.new.crawl
