@@ -6,11 +6,12 @@ require 'ginseng'
 module Onionbot
   extend ActiveSupport::Autoload
 
-  autoload :Application
   autoload :Chinachu
   autoload :Config
+  autoload :Crawler
   autoload :DataFile
   autoload :Environment
+  autoload :HTTP
   autoload :Logger
   autoload :Package
   autoload :Slack

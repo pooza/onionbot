@@ -1,5 +1,5 @@
 module Onionbot
-  class Application
+  class Crawler
     def initialize
       @config = Config.instance
       @logger = Logger.new
@@ -7,7 +7,7 @@ module Onionbot
       @data_file = DataFile.new
     end
 
-    def execute
+    def crawl
       @logger.info({message: 'start', version: Package.version})
       sleep(@config['/sleep'])
       @data_file.load.each do |k, q|
