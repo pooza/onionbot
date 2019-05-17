@@ -1,23 +1,27 @@
 module Onionbot
   module Package
+    def module_name
+      return 'Onionbot'
+    end
+
     def environment_class
-      return 'Onionbot::Environment'
+      return "#{module_name}::Environment".constantize
     end
 
     def package_class
-      return 'Onionbot::Package'
+      return "#{module_name}::Package".constantize
     end
 
     def config_class
-      return 'Onionbot::Config'
+      return "#{module_name}::Config".constantize
     end
 
     def logger_class
-      return 'Onionbot::Logger'
+      return "#{module_name}::Logger".constantize
     end
 
     def http_class
-      return 'Onionbot::HTTP'
+      return "#{module_name}::HTTP".constantize
     end
 
     def self.name

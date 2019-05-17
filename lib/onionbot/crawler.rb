@@ -21,8 +21,8 @@ module Onionbot
     rescue => e
       e = Ginseng::Error.create(e)
       e.package = Package.full_name
-      Slack.broadcast(e.to_h)
-      @logger.error(e.to_h)
+      Slack.broadcast(e)
+      @logger.error(e)
       exit 1
     end
 
