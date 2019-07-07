@@ -1,4 +1,3 @@
-require 'addressable/uri'
 require 'json'
 require 'time'
 
@@ -31,7 +30,7 @@ module Onionbot
 
     def url
       unless @url
-        @url = Addressable::URI.parse(@config['/chinachu/url'])
+        @url = Ginseng::URI.parse(@config['/chinachu/url'])
         @url.path = '/api/recording.json'
       end
       return @url
