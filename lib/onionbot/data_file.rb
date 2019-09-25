@@ -1,5 +1,3 @@
-require 'json'
-
 module Onionbot
   class DataFile
     def load

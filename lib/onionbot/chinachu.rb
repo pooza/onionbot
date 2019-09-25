@@ -1,4 +1,3 @@
-require 'json'
 require 'time'
 
 module Onionbot
