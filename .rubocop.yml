@@ -14,7 +14,10 @@ Style/DoubleNegation:
 Style/FormatStringToken:
   EnforcedStyle: template
 
-Layout/IndentFirstHashElement:
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/SpaceBeforeBlockBraces:
@@ -89,6 +92,10 @@ Style/IdenticalConditionalBranches:
 
 Metrics/LineLength:
   Max: 100
+  Exclude:
+    - test/*
+
+Style/IfUnlessModifier:
   Exclude:
     - test/*
 

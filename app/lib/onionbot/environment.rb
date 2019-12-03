@@ -5,7 +5,7 @@ module Onionbot
     end
 
     def self.dir
-      return File.expand_path('../..', __dir__)
+      return Onionbot.dir
     end
   end
 end

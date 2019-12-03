@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.2'
-gem 'addressable'
+ruby '2.6.5'
 gem 'ginseng-core', git: 'https://github.com/pooza/ginseng-core.git'
-gem 'httparty'
 gem 'rake'
 gem 'rubocop'

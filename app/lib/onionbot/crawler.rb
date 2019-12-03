@@ -8,7 +8,7 @@ module Onionbot
     end
 
     def crawl
-      @logger.info({message: 'start', version: Package.version})
+      @logger.info(message: 'start', version: Package.version)
       sleep(@config['/sleep'])
       @data_file.load.each do |k, q|
         Slack.broadcast(create_message(q, '録画終了')) unless @chinachu.queues[k]
@@ -17,7 +17,7 @@ module Onionbot
         Slack.broadcast(create_message(q, '録画開始')) unless @data_file.load[k]
       end
       @data_file.save(@chinachu.queues)
-      @logger.info({message: 'end', version: Package.version})
+      @logger.info(message: 'end', version: Package.version)
     rescue => e
       e = Ginseng::Error.create(e)
       e.package = Package.full_name
