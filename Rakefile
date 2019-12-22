@@ -10,6 +10,6 @@ require 'onionbot'
   task action => "onion:#{action}"
 end
 
-Dir.glob(File.join(Onionbot::Environment.dir, 'app/task/*.rb')).each do |f|
+Dir.glob(File.join(Onionbot::Environment.dir, 'app/task/*.rb')).sort.each do |f|
   require f
 end
