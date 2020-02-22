@@ -1,6 +1,3 @@
-require 'active_support'
-require 'active_support/core_ext'
-require 'zeitwerk'
 require 'ginseng'
 
 module Onionbot
@@ -9,13 +6,15 @@ module Onionbot
   end
 
   def self.loader
+    config = YAML.load_file(File.join(dir, 'config/autoload.yaml'))
     loader = Zeitwerk::Loader.new
-    loader.inflector.inflect(
-      'http' => 'HTTP',
-    )
+    loader.inflector.inflect(config['inflections'])
     loader.push_dir(File.join(dir, 'app/lib'))
-    loader.setup
+    config['dirs'].each do |d|
+      loader.push_dir(File.join(dir, 'app', d))
+    end
+    return loader
   end
 end
 
-Onionbot.loader
+Onionbot.loader.setup
