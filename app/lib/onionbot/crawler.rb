@@ -12,9 +12,11 @@ module Onionbot
       sleep(@config['/sleep'])
       @data_file.load.each do |k, q|
         Slack.broadcast(create_message(q, '録画終了')) unless @chinachu.queues[k]
+        @logger.info(q: q, message: 'end')
       end
       @chinachu.queues.each do |k, q|
         Slack.broadcast(create_message(q, '録画開始')) unless @data_file.load[k]
+        @logger.info(q: q, message: 'start')
       end
       @data_file.save(@chinachu.queues)
       @logger.info(message: 'end', version: Package.version)
