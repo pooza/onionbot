@@ -10,10 +10,10 @@ module Onionbot
       messages = []
       sleep(@config['/sleep'])
       @data_file.load.each do |k, q|
-        messages.push(create_message(q, '録画終了'))
+        messages.push(create_message(q, '録画終了')) unless @chinachu.queues[k]
       end
       @chinachu.queues.each do |k, q|
-        messages.push(create_message(q, '録画開始'))
+        messages.push(create_message(q, '録画開始')) unless @data_file.load[k]
       end
       @data_file.save(@chinachu.queues)
       puts messages.map {|m| YAML.dump(m)}.join("=====\n")
