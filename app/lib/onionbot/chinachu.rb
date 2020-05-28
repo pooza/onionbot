@@ -5,11 +5,12 @@ module Onionbot
     def initialize
       @config = Config.instance
       @http = HTTP.new
+      @http.base_uri = @config['/chinachu/url']
     end
 
     def queues
       result = {}
-      @http.get(url).each do |queue|
+      @http.get('/api/recording.json').each do |queue|
         result[queue['id']] = queue
       end
       return result
@@ -25,14 +26,6 @@ module Onionbot
         values[key] = Time.at(queue[key] / 1000).to_s
       end
       return values
-    end
-
-    def url
-      unless @url
-        @url = Ginseng::URI.parse(@config['/chinachu/url'])
-        @url.path = '/api/recording.json'
-      end
-      return @url
     end
   end
 end
