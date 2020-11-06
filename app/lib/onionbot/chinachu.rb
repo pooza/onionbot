@@ -4,7 +4,7 @@ module Onionbot
   class Chinachu
     def initialize
       @config = Config.instance
-      @http = HTTP.new
+      @http = Ginseng::HTTP.new
       @http.base_uri = @config['/chinachu/url']
     end
 
