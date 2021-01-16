@@ -9,11 +9,9 @@ module Onionbot
     end
 
     def queues
-      result = {}
-      @http.get('/api/recording.json').each do |queue|
-        result[queue['id']] = queue
-      end
-      return result
+      return @http.get('/api/recording.json').map {|v| [v['id'], v]}.to_h
+    rescue
+      return {}
     end
 
     def summary(queue)
