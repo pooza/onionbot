@@ -1,13 +1,14 @@
 GIT
   remote: https://github.com/pooza/ginseng-core.git
-  revision: 138db502fd714bdc0b5c41f61bc220b60b4de718
+  revision: 97a363fa41c88dfaed23adb97ac4867c820ba9e9
   specs:
-    ginseng-core (1.8.10)
+    ginseng-core (1.10.1)
       activesupport (>= 6.1.1)
       addressable
       daemon-spawn
       httparty
       json-schema
+      mail
       multi_json
       nokogiri (>= 1.11.0.rc4)
       rake
@@ -16,7 +17,7 @@ GIT
       syslog-logger
       unicode
       yajl-ruby
-      zeitwerk (>= 2.3.0)
+      zeitwerk (>= 2.4.0)
 
 GEM
   remote: https://rubygems.org/
@@ -30,7 +31,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.1)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     crass (1.0.6)
     daemon-spawn (0.4.2)
     domain_name (0.5.20190701)
@@ -45,9 +46,12 @@ GEM
       concurrent-ruby (~> 1.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
+    mail (2.7.1)
+      mini_mime (>= 0.1.1)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.1104)
+    mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
     multi_json (1.15.0)
